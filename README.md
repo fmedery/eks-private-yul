@@ -1,7 +1,7 @@
 ![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
 
 # TODO
-* EKS endpoint en mode privé
+* EKS endpoint en mode privé: https://aws.amazon.com/about-aws/whats-new/2019/03/amazon-eks-introduces-kubernetes-api-server-endpoint-access-cont/
 * Détails DNS pour le EKS endpoint en mode privé: https://aws.amazon.com/blogs/compute/enabling-dns-resolution-for-amazon-eks-cluster-endpoints/
 * Installation d'un `CNI` de type overlay `WEAVE NET`: https://medium.com/@jeremy.i.cowan/running-weave-net-on-eks-7fd96372b1a
 * Intégration de `Ambassador` et `Isto`: https://medium.com/faun/integrating-ambassador-and-istio-to-manage-traffics-routing-on-eks-dc5e3893a6c5
