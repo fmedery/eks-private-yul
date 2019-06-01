@@ -1,29 +1,22 @@
 ![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
 
-# Introduction
+# Prérequis
 * le VPC est déja créé et comprend:
-  * deux subnet privés
-  * deux subnet publics
-* EKS n'exposera pas de service à Internet et on utilisera donc que les subnets privés
-* Le role de service `eksServiceRole` peut-être le même pour tous les clusters EKS dans le compte
+  * deux subnets privés
+  * deux subnets publics
+* On n'exposera pas de service à Internet et on utilisera donc que les subnets privés
+* Le role de service `eksServiceRole` peut-être le même pour tous les clusters EKS dans le même compte
 * `EKS_SUBNET_IDS` ne doit contenir que les subnets privés
 * Il faut attendre la création de EKS avant la création des nodes
-* les commandes ci-dessous ont été testée sous MacOS
-
-# Prérequis
+* les commandes ci-dessous ont été testées sous MacOS
 * Logiciel installés et disponibles via `$PATH`:
   * `awscli`
   * `kubectl`
   * `aws-iam-authentificator`
   * `git`
 * awscli config pointant vers ca-central-1
-* L'usager IAM doit-être capable de créer des ressources dans le compte AWS:
-  * AIM role
-  * EKS cluster
-  * EC2
-  * ELB
-  * auto scaling group
-* Ajouter le tag suivant sur les subnets privés utilisé par le cluster EKS (aka `EKS_SUBNET_IDS`):
+* L'usager IAM doit-être capable de créer des ressources dans le compte AWS
+* Le tag suivant doit être présent sur les subnets privés utilisé par le cluster EKS (aka `EKS_SUBNET_IDS`):
   ```
   KEY: kubernetes.io/role/internal-elb
   VALUE: 1 
