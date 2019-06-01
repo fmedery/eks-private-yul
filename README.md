@@ -1,6 +1,7 @@
 # How does Amazon EKS work?
 
-![EKS](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
+
 # Introduction
 * le VPC est déja crée et comprend:
   * deux subnet privés
