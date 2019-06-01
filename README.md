@@ -1,5 +1,9 @@
 ![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
 
+# TODO
+* EKS endpoint en mode privé
+* Détails DNS pour le EKS endpoint en mode privé
+
 # Prérequis
 * le VPC est déja créé et comprend:
   * deux subnets privés
