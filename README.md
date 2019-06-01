@@ -2,7 +2,9 @@
 
 # TODO
 * EKS endpoint en mode privé
-* Détails DNS pour le EKS endpoint en mode privé
+* Détails DNS pour le EKS endpoint en mode privé: https://aws.amazon.com/blogs/compute/enabling-dns-resolution-for-amazon-eks-cluster-endpoints/
+* Installation d'un `CNI` de type overlay `WEAVE NET`: https://medium.com/@jeremy.i.cowan/running-weave-net-on-eks-7fd96372b1a
+* Intégration de `Ambassador` et `Isto`: https://medium.com/faun/integrating-ambassador-and-istio-to-manage-traffics-routing-on-eks-dc5e3893a6c5
 
 # Prérequis
 * le VPC est déja créé et comprend:
