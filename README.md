@@ -1,17 +1,17 @@
 ![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
 
 # Introduction
-* le VPC est déja crée et comprend:
+* le VPC est déja créé et comprend:
   * deux subnet privés
   * deux subnet publics
-* EKS n'exposera pas de service à Internet et on utilisera que les subnets privés
+* EKS n'exposera pas de service à Internet et on utilisera donc que les subnets privés
 * Le role de service `eksServiceRole` peut-être le même pour tous les clusters EKS dans le compte
-* `EKS_SUBNET_IDS` ne doit contenir que les réseau privés
+* `EKS_SUBNET_IDS` ne doit contenir que les subnets privés
 * Il faut attendre la création de EKS avant la création des nodes
 * les commandes ci-dessous ont été testée sous MacOS
 
 # Prérequis
-* Logiciel installés et disponible via `$PATH`:
+* Logiciel installés et disponibles via `$PATH`:
   * `awscli`
   * `kubectl`
   * `aws-iam-authentificator`
@@ -22,7 +22,7 @@
   * EC2
   * ELB
   * auto scaling group
-* Ajouter les tags suivants sur les réseaux privés utilisé par le cluster EKS:
+* Ajouter le tag suivant sur les subnets privés utilisé par le cluster EKS (aka `EKS_SUBNET_IDS`):
   ```
   KEY: kubernetes.io/role/internal-elb
   VALUE: 1 
@@ -37,7 +37,7 @@ export EKS_NODE_MIN="3" # nombre minimum de nodes
 export EKS_NODE_MAX="3" # nombre maximum de nodes
 export EKS_VPC_ID="vpc-0403e2434c78a7e9e" # id du VPC qui hébergera EKS https://ca-central-1.console.aws.amazon.com/vpc/home?region=ca-central-1#vpcs:sort=VpcId
 export EKS_SECURITY_GROUPS="sg-0e5b8ed40b0f9d0a5" # security group for EKS Control Plane
-export EKS_SUBNET_IDS="subnet-0d94577440a441dd0,subnet-07816231a0ead0694" # Private Subnet only https://ca-central-1.console.aws.amazon.com/vpc/home?region=ca-central-1#subnets:sort=SubnetId
+export EKS_SUBNET_IDS="subnet-0d94577440a441dd0,subnet-07816231a0ead0694" # Private Subnets only https://ca-central-1.console.aws.amazon.com/vpc/home?region=ca-central-1#subnets:sort=SubnetId
 
 # VARIBLES: edition facultative
 export REGION="ca-central-1" # Région 
