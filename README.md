@@ -52,7 +52,9 @@ export EKS_WORKER_AMI=ami-079df7c59d89ba556 # AMI optimisée pour EKS dans la re
 export EKS_SERVICE_ROLE_NAME="eksServiceRole" # nom du role de service EKS
 export WORKER_STACK_NAME="${EKS_CLUSTER_NAME}-worker-nodes" # nom de la stack pour la création des nodes
 export EKS_NODE_GROUP_NAME="${EKS_CLUSTER_NAME}-worker-group" # nom du nodegroup
+```
 
+```sh
 # Création du role de service
 aws --region ${REGION} cloudformation create-stack \
     --stack-name eks-service-role \
@@ -60,14 +62,18 @@ aws --region ${REGION} cloudformation create-stack \
     --capabilities CAPABILITY_NAMED_IAM
 
 export EKS_SERVICE_ROLE=$(aws --region ${REGION} iam list-roles --query 'Roles[?contains(RoleName, `eksService`) ].Arn' --out text) # On va chercher l'ARN du role de EKS
+```
 
+```sh
 # Création de la clé SSH associée aux nodes
 aws --region ${REGION} ec2  create-key-pair \
     --key-name ${EKS_CLUSTER_NAME} \
     --query 'KeyMaterial' --output text > $HOME/.ssh/${EKS_CLUSTER_NAME}.pem
 
 chmod 0400 $HOME/.ssh/${EKS_CLUSTER_NAME}.pem
+```
 
+```sh
 # Création du cluster EKS
 aws --region ${REGION} eks create-cluster \
     --name $EKS_CLUSTER_NAME \
@@ -79,7 +85,9 @@ aws --region ${REGION} eks create-cluster \
 aws --region ${REGION} eks describe-cluster \
     --name $EKS_CLUSTER_NAME \
     --query 'cluster.status'
+```
 
+```sh
 # Création des nodes
 export EKS_ENDPOINT=$(aws --region ${REGION}  eks describe-cluster --name $EKS_CLUSTER_NAME --query cluster.endpoint)
 export EKS_CERT=$(aws --region ${REGION}  eks describe-cluster --name $EKS_CLUSTER_NAME --query cluster.certificateAuthority.data)
@@ -101,14 +109,18 @@ aws --region ${REGION} cloudformation create-stack \
       ParameterKey=KeyName,ParameterValue=${EKS_CLUSTER_NAME}
 
 export EKS_INSTANCE_ROLE=$(aws --region ${REGION} iam list-roles --query 'Roles[?contains(RoleName, `'${EKS_CLUSTER_NAME}'-worker-nodes`) ].Arn' --out text) # on va chercher l'ARN du roles des nodes
+```
 
+```sh
 # Création de la configuration pour kubectl
 aws --region=$REGION eks update-kubeconfig \
     --name $EKS_CLUSTER_NAME \
     --kubeconfig $HOME/.kube/$EKS_CLUSTER_NAME.conf
 
 kubectl --kubeconfig $HOME/.kube/$EKS_CLUSTER_NAME.conf get componentstatus  # test la connectivité et le control plane
+```
 
+```sh
 # Création du configmap pour authoriser les nodes à joindre au cluster EKS
 cat > /tmp/${EKS_CLUSTER_NAME}aws-auth-cm.yaml <<EOF
 apiVersion: v1
