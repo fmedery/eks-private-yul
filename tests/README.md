@@ -4,6 +4,10 @@
 
 # Test
 ```sh
+cd /tmp/eks-private-yul/tests/
+```
+
+```sh
 # Vérification des services
 kubectl --kubeconfig $HOME/.kube/$EKS_CLUSTER_NAME.conf get svc
 

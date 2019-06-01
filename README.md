@@ -15,6 +15,7 @@
   * `awscli`
   * `kubectl`
   * `aws-iam-authentificator`
+  * `git`
 * awscli config pointant vers ca-central-1
 * L'usager IAM doit-être capable de créer des ressources dans le compte AWS:
   * AIM role
@@ -29,6 +30,12 @@
   ```
 
 # Création du cluster EKS
+```sh
+# clone repo
+git clone https://github.com/fmedery/eks-private-yul.git /tmp/eks-private-yul
+cd /tmp/eks-private-yul
+```
+
 ```sh
 # VARIABLES: edition obligatoire
 export EKS_CLUSTER_NAME="eks-cluster" # nom du cluster EKS 
