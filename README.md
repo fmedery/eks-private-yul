@@ -1,4 +1,8 @@
+YOU CAN NOW USE [eksctl](https://eksctl.io/) to deploy in ca-central-1
+
 ![EKS](https://raw.githubusercontent.com/fmedery/eks-private-yul/master/img/eks.png)
+
+
 
 # TODO
 * EKS endpoint en mode privé: https://aws.amazon.com/about-aws/whats-new/2019/03/amazon-eks-introduces-kubernetes-api-server-endpoint-access-cont/
